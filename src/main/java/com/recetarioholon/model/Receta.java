@@ -26,7 +26,7 @@ public class Receta {
     private String subtitulo;
 
     @Column(name="pasos")
-    private List<String> pasos;
+    private String pasos;
 
     @ManyToMany
     @JoinTable(
@@ -57,11 +57,11 @@ public class Receta {
         this.subtitulo = subtitulo;
     }
 
-    public List<String> getPasos() {
+    public String getPasos() {
         return pasos;
     }
 
-    public void setPasos(List<String> pasos) {
+    public void setPasos(String pasos) {
         this.pasos = pasos;
     }
 

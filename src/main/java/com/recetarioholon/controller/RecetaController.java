@@ -50,6 +50,7 @@ public class RecetaController {
             receta.setTitulo(newReceta.getTitulo());
             receta.setSubtitulo(newReceta.getSubtitulo());
             receta.setIngredientes(newReceta.getIngredientes());
+            receta.setPasos(newReceta.getPasos());
             return recetaRepository.save(receta);
         })
         .orElseThrow(()->new RecetaNotFoundException(id));

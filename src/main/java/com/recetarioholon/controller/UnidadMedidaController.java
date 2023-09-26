@@ -45,7 +45,7 @@ public class UnidadMedidaController {
       .orElseThrow(() -> new UMNotFoundException(id));
     }
 
-    // Editar o crear
+    // Editar
     @PutMapping("/{id}")
     public UnidadMedida edit(@RequestBody UnidadMedida newUnidadMedida, @PathVariable Integer id){
         return unidadMedidaRepository.findById(id)

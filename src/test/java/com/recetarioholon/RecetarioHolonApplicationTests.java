@@ -1,4 +1,4 @@
-package com.recetarioholon.recetarioholon;
+package com.recetarioholon;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
