@@ -34,8 +34,8 @@ public class UnidadMedidaController {
 
     // Nuevo
     @PostMapping // http://localhost:8080/unidadmedida
-    public UnidadMedida newMarca(@RequestBody UnidadMedida newMarca){
-        return unidadMedidaRepository.save(newMarca);
+    public UnidadMedida newUnidadMedida(@RequestBody UnidadMedida newuUnidadMedida){
+        return unidadMedidaRepository.save(newuUnidadMedida);
     }
 
     //Obtener uno

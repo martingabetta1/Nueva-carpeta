@@ -8,12 +8,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Size;
 
 
 @Entity
-@Table(name="unidadMedida", uniqueConstraints=@UniqueConstraint(columnNames={"id", "nombre"}))
+@Table(name="unidadMedida")
 public class UnidadMedida {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
