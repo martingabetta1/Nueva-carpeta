@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crudmarca.exception.UMNotFoundException;
+import com.crudmarca.exception.IngredienteNotFoundException;
 import com.crudmarca.model.Ingrediente;
-import com.crudmarca.model.UnidadMedida;
-import com.crudmarca.repository.UnidadMedidaRepository;
+import com.crudmarca.repository.IngredienteRepository;
 
 @RestController
 @RequestMapping("/ingrediente")
@@ -41,23 +40,22 @@ public class IngredienteController {
 
     //Obtener uno
     @GetMapping("/{id}")
-    public ingrediente one(@PathVariable Integer id){
+    public Ingrediente one(@PathVariable Integer id){
         return ingredienteRepository.findById(id)
-      .orElseThrow(() -> new UMNotFoundException(id));
+      .orElseThrow(() -> new IngredienteNotFoundException(id));
     }
 
     // Editar o crear
     @PutMapping("/{id}")
-    public ingrediente edit(@RequestBody ingrediente newiIngrediente, @PathVariable Integer id){
+    public Ingrediente edit(@RequestBody Ingrediente newIngrediente, @PathVariable Integer id){
         return ingredienteRepository.findById(id)
-        .map(unidad -> {
-          unidad.setNombre(newUnidadMedida.getNombre());
-          return ingredienteRepository.save(unidad);
+        .map(ingrediente -> {
+          ingrediente.setNombre(newIngrediente.getNombre());
+          ingrediente.setUnidadMedida(newIngrediente.getUnidadMedida());
+          return ingredienteRepository.save(ingrediente);
         })
-        .orElseGet(() -> {
-          newIngrediente.setId(id);
-          return ingredienteRepository.save(newIngrediente);
-        });
+        .orElseThrow(() -> new IngredienteNotFoundException(id)
+        );
     }
 
 

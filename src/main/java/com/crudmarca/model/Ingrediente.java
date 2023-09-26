@@ -10,12 +10,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Size;
 
 
 @Entity
-@Table(name="Ingrediente", uniqueConstraints=@UniqueConstraint(columnNames={"id", "nombre","cantidad","unidad de medida"}))
+@Table(name="Ingrediente")
 public class Ingrediente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +23,7 @@ public class Ingrediente {
     @Size(max = 100)
     @Column(name = "nombre")
     private String nombre;
-    @Column(name = "Cantidad")
+    @Column(name = "cantidad")
     private Integer cantidad;
     
     @ManyToOne
@@ -63,3 +62,4 @@ public class Ingrediente {
     public void setUnidadMedida(UnidadMedida unidadMedida) {
         this.unidadMedida = unidadMedida;
     }
+}
