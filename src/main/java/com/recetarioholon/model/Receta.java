@@ -7,8 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
@@ -29,11 +27,6 @@ public class Receta {
     private String pasos;
 
     @ManyToMany
-    @JoinTable(
-        name="ingrediente",
-        joinColumns =  @JoinColumn(name="id"),
-        inverseJoinColumns = @JoinColumn(name="recetaId")
-    )
     private List<Ingrediente> ingredientes;
 
     public Receta(){
@@ -83,5 +76,4 @@ public class Receta {
         this.recetaId = recetaId;
     }
 
-    
 }

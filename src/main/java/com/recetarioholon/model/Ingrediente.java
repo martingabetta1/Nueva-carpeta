@@ -2,15 +2,18 @@ package com.recetarioholon.model;
 
 
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -20,14 +23,23 @@ public class Ingrediente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Size(max = 100)
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "cantidad")
     private Integer cantidad;
+
+
+    @ManyToMany
+    @JoinTable(
+    name = "ingredientes_receta",
+    joinColumns = @JoinColumn(name = "ingrediente_id"),
+    inverseJoinColumns = @JoinColumn(name = "receta_id")
+)
+private List<Receta> recetas;
+
     
     @ManyToOne
-    @JoinColumn(name = "Unidad de medida")
+    @JoinColumn(name = "unidadMedida")
     UnidadMedida unidadMedida;
 
 
